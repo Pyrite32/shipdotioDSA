@@ -1,0 +1,301 @@
+[gd_scene load_steps=11 format=3 uid="uid://bokv07t1me8wp"]
+
+[ext_resource type="Texture2D" uid="uid://dwdbdf0twwlo3" path="res://textures/overlay-bg.png" id="1_fbbid"]
+[ext_resource type="Texture2D" uid="uid://cx3r1pmo6iimf" path="res://textures/movies.png" id="1_idyku"]
+[ext_resource type="Texture2D" uid="uid://b1xw13fk2urhd" path="res://textures/ship-io-logo.png" id="2_fny1s"]
+[ext_resource type="FontFile" uid="uid://fncmcodler5x" path="res://fonts/koliko-Bold.ttf" id="3_bkepn"]
+[ext_resource type="FontFile" uid="uid://co48i6xkoj41c" path="res://fonts/koliko-Regular.ttf" id="4_cchk6"]
+[ext_resource type="Texture2D" uid="uid://divsuhjjakq5n" path="res://textures/start-button-front.png" id="6_lt6vw"]
+[ext_resource type="Texture2D" uid="uid://c3bchp43we3qe" path="res://textures/start-button-front-light.png" id="7_5gb0x"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_77vsj"]
+blend_mode = 1
+
+[sub_resource type="Animation" id="Animation_67p5j"]
+resource_name = "scroll-movies"
+length = 10.0
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MoviesExampleScroller/Left:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -1000), Vector2(0, -1750), Vector2(0, -2500)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MoviesExampleScroller/Right:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3000, -4500), Vector2(3000, -3750), Vector2(3000, -3000)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mum0n"]
+_data = {
+"scroll-movies": SubResource("Animation_67p5j")
+}
+
+[node name="All" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SolidBG" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Item" type="ColorRect" parent="SolidBG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.117647, 0.109804, 0.192157, 1)
+
+[node name="MoviesExampleScroller" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.785398
+scale = Vector2(0.3, 0.3)
+
+[node name="Left" type="Control" parent="MoviesExampleScroller"]
+anchors_preset = 0
+offset_top = -2433.69
+offset_right = 40.0
+offset_bottom = -2393.69
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MoviesExampleScroller/Left"]
+layout_mode = 0
+offset_right = 1400.0
+offset_bottom = 2930.0
+
+[node name="1" type="TextureRect" parent="MoviesExampleScroller/Left/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_idyku")
+
+[node name="2" type="TextureRect" parent="MoviesExampleScroller/Left/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_idyku")
+
+[node name="3" type="TextureRect" parent="MoviesExampleScroller/Left/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_idyku")
+
+[node name="Right" type="Control" parent="MoviesExampleScroller"]
+anchors_preset = 0
+offset_left = 3000.0
+offset_top = -3066.31
+offset_right = 3040.0
+offset_bottom = -3026.31
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MoviesExampleScroller/Right"]
+layout_mode = 0
+offset_right = 1400.0
+offset_bottom = 2930.0
+
+[node name="1" type="TextureRect" parent="MoviesExampleScroller/Right/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_idyku")
+
+[node name="2" type="TextureRect" parent="MoviesExampleScroller/Right/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_idyku")
+
+[node name="3" type="TextureRect" parent="MoviesExampleScroller/Right/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_idyku")
+
+[node name="OverlayBG" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="OverlayBG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_fbbid")
+expand_mode = 1
+
+[node name="Logo" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+scale = Vector2(0.3, 0.3)
+
+[node name="CenterContainer" type="CenterContainer" parent="Logo"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -443.0
+offset_right = 443.0
+offset_bottom = 862.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="Logo/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("2_fny1s")
+
+[node name="WhatIf" type="Label" parent="."]
+layout_mode = 2
+offset_left = 230.4
+offset_top = 279.9
+offset_right = 921.4
+offset_bottom = 318.9
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_bkepn")
+theme_override_font_sizes/font_size = 36
+text = "What if we shipped %s with %s?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Below" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.2
+anchor_top = 0.5
+anchor_right = 0.8
+anchor_bottom = 0.6
+offset_left = -1.52588e-05
+offset_top = 36.0
+offset_right = -6.10352e-05
+offset_bottom = 171.2
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Words" type="VBoxContainer" parent="Below"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 7
+
+[node name="Label" type="Label" parent="Below/Words"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.317647, 0.32549, 0.443137, 1)
+theme_override_fonts/font = ExtResource("4_cchk6")
+theme_override_font_sizes/font_size = 23
+text = "• Pair 20,000+ Anime and Cartoon characters from your favorite TV shows and movies.
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="Below/Words"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.317647, 0.32549, 0.443137, 1)
+theme_override_fonts/font = ExtResource("4_cchk6")
+theme_override_font_sizes/font_size = 23
+text = "• Instantly search up character names in real-time
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="Below/Words"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.317647, 0.32549, 0.443137, 1)
+theme_override_fonts/font = ExtResource("4_cchk6")
+theme_override_font_sizes/font_size = 23
+text = "• We determine how well your characters match using our highly-accurate loveboat algorithm"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 246.0
+offset_bottom = 246.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.2, 0.2)
+
+[node name="Position" type="Control" parent="StartButton"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureButton" type="TextureButton" parent="StartButton/Position"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -256.0
+offset_right = 500.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_lt6vw")
+
+[node name="TextureRect" type="TextureRect" parent="StartButton/Position"]
+visible = false
+material = SubResource("CanvasItemMaterial_77vsj")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -256.0
+offset_right = 500.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_5gb0x")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "scroll-movies"
+libraries = {
+"": SubResource("AnimationLibrary_mum0n")
+}

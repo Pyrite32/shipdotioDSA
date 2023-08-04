@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm7uf87eh07jp"]
+
+[ext_resource type="PackedScene" uid="uid://bokv07t1me8wp" path="res://landing.tscn" id="1_8sn8g"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3pms0"]
+
+[node name="MainScene" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="All" parent="CanvasLayer" instance=ExtResource("1_8sn8g")]
+material = SubResource("CanvasItemMaterial_3pms0")

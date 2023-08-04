@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bxf8vgwyfu1l2"
+
+[deps]
+
+files=["res://scrapers/character_scraper/characters.0.translation"]
+
+source_file="res://scrapers/character_scraper/characters.csv"
+dest_files=["res://scrapers/character_scraper/characters.0.translation"]
+
+[params]
+
+compress=true
+delimiter=0

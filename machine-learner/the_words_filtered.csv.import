@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://4tjmt5lv7p8t"
+
+[deps]
+
+files=["res://machine-learner/the_words_filtered.3.translation"]
+
+source_file="res://machine-learner/the_words_filtered.csv"
+dest_files=["res://machine-learner/the_words_filtered.3.translation"]
+
+[params]
+
+compress=true
+delimiter=0

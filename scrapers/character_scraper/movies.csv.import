@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c1pb55nohvrtd"
+
+[deps]
+
+files=["res://scrapers/character_scraper/movies.data.translation", "res://scrapers/character_scraper/movies. test1.translation", "res://scrapers/character_scraper/movies.test2.translation"]
+
+source_file="res://scrapers/character_scraper/movies.csv"
+dest_files=["res://scrapers/character_scraper/movies.data.translation", "res://scrapers/character_scraper/movies. test1.translation", "res://scrapers/character_scraper/movies.test2.translation"]
+
+[params]
+
+compress=true
+delimiter=0

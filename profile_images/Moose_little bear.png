@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="330">
+  <rect x="50" y="50" width="900" height="230" stroke-width="100" stroke="#800080" fill="#ff80ff"/>
+  <text x="50%" y="200" style="text-anchor:middle;font-family:'Courier New';text-anchor:center;font-weight:700;font-size:100;">TELEVISION</text>
+</svg>

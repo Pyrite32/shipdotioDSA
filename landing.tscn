@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://bokv07t1me8wp"]
+[gd_scene load_steps=12 format=3 uid="uid://bokv07t1me8wp"]
 
+[ext_resource type="Script" path="res://landing.gd" id="1_3w23o"]
 [ext_resource type="Texture2D" uid="uid://dwdbdf0twwlo3" path="res://textures/overlay-bg.png" id="1_fbbid"]
 [ext_resource type="Texture2D" uid="uid://cx3r1pmo6iimf" path="res://textures/movies.png" id="1_idyku"]
 [ext_resource type="Texture2D" uid="uid://b1xw13fk2urhd" path="res://textures/ship-io-logo.png" id="2_fny1s"]
@@ -26,7 +27,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.1, 5, 10),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, -1000), Vector2(0, -1750), Vector2(0, -2500)]
+"values": [Vector2(0, -1000), Vector2(0, -1750), Vector2(0, -2470)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -35,10 +36,10 @@ tracks/1/path = NodePath("MoviesExampleScroller/Right:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 5, 10),
+"times": PackedFloat32Array(0, 5.02, 9.99),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(3000, -4500), Vector2(3000, -3750), Vector2(3000, -3000)]
+"values": [Vector2(3000, -4500), Vector2(3000, -3750), Vector2(3000, -3030)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mum0n"]
@@ -53,6 +54,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3w23o")
 
 [node name="SolidBG" type="Control" parent="."]
 layout_mode = 1
@@ -83,9 +85,9 @@ scale = Vector2(0.3, 0.3)
 
 [node name="Left" type="Control" parent="MoviesExampleScroller"]
 anchors_preset = 0
-offset_top = -2433.69
+offset_top = -1768.09
 offset_right = 40.0
-offset_bottom = -2393.69
+offset_bottom = -1728.09
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MoviesExampleScroller/Left"]
 layout_mode = 0
@@ -107,9 +109,9 @@ texture = ExtResource("1_idyku")
 [node name="Right" type="Control" parent="MoviesExampleScroller"]
 anchors_preset = 0
 offset_left = 3000.0
-offset_top = -3066.31
+offset_top = -3734.7
 offset_right = 3040.0
-offset_bottom = -3026.31
+offset_bottom = -3694.7
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MoviesExampleScroller/Right"]
 layout_mode = 0
@@ -185,6 +187,8 @@ text = "What if we shipped %s with %s?"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+visible_characters = 18
+visible_ratio = 0.6
 
 [node name="Below" type="Control" parent="."]
 layout_mode = 1

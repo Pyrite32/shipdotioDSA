@@ -11,7 +11,7 @@ def modded_lsd_sort(dataset): # O(N * W) N: number of characters W: max string s
 
     # lsd radix sort
     for i in range(max_length - 1, -1, -1):
-        dataset = sorted(dataset, key=lambda s: s[i][0])
+        dataset = sorted(dataset, key=lambda character: ord(character[0][i]))
 
     # Remove padding
     dataset = [character[0].rstrip() for character in dataset]

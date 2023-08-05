@@ -16,11 +16,11 @@ def modded_msd_sort(dataset): # O(N) (best case)  to O(N * W) (worst case), W: a
 
         for j in range(low, high + 1):
             char_index = ord(dataset[i][0][d] if d < len(dataset[i][0]) else -1)
-            aux[count[char_index + 1]] = dataset[i][0]
+            aux[count[char_index + 1]] = dataset[i]
             count[char_index + 1] += 1
 
         for i in range (low, high + 1):
-            dataset[i][0] = aux[i - low]
+            dataset[i] = aux[i - low]
 
         for r in range(R):
             sort(dataset, low + count[r], low + count[r + 1] - 1, d + 1)

@@ -1,18 +1,29 @@
-def modded_lsd_sort(dataset): # O(N * W) N: number of characters W: max string size
+def modded_lsd_sort(dataset, radix=256): # O(N * W) N: number of characters W: max string size
 
     # find max length string
     max_length = 0
     for character in dataset:
         if len(character[0]) > max_length:
             max_length = len(character[0])
+    return lsd_radix_sort_helper(dataset, max_length, radix)
 
-    # Pad shorter strings
-    dataset = [character[0].ljust(max_length, '\0') for character in dataset]
+def lsd_radix_sort_helper(dataset, max_length, radix):
+    for pos in range(max_length - 1, -1, -1):
+        count = [0] * (radix + 1)
+        aux = [None] * len(dataset)
 
-    # lsd radix sort
-    for i in range(max_length - 1, -1, -1):
-        dataset = sorted(dataset, key=lambda character: ord(character[0][i]))
+        for character in dataset:
+            idx = ord(character[0][pos]) if pos < len(character[0]) else 0
+            count[idx] += 1
 
-    # Remove padding
-    dataset = [character[0].rstrip() for character in dataset]
+        for i in range(1, radix + 1):
+            count[i] += count[i - 1]
+
+        for character in reversed(dataset):
+            idx = ord(character[0][pos]) if pos < len(character[0]) else 0
+            aux[count[idx] - 1] = character
+            count[idx] -= 1
+
+        dataset = aux
+
     return dataset

@@ -22,8 +22,8 @@ CHAR_START = "char_start.txt"
 CSV_FILE = "characters.csv"
 UNIQUE_SET_FILE = "the_words.csv"
 POS_SAV = "sav.txt"
-GOGGLE_USER = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36'
-GOGGLE_USER_OBJ = { "User-Agent": 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36' }
+google_USER = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36'
+google_USER_OBJ = { "User-Agent": 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36' }
 CHECKPOINT_SAVE_FREQUENCY = 50
 SET_SIZE = 0
 PARCEL_INDEX = 0
@@ -31,32 +31,32 @@ PARCEL_INDEX = 0
 IGNORE = ['Gallery']
 main_map = {}
 
-def start_dominic():
+def start_webscraper():
     
     c_options = wd.ChromeOptions();
     c_options.add_argument('--ignore-certificate-errors')
     c_options.add_argument('--ignore-ssl-errors')
     c_options.add_argument('-headless')
     c_options.add_argument('--log-level=25')
-    c_options.add_argument(f'user_agent={GOGGLE_USER}')
+    c_options.add_argument(f'user_agent={google_USER}')
     LOGGER.setLevel(logging.CRITICAL)
     logging.getLogger('lxml').setLevel(logging.CRITICAL)
     driver = wd.Chrome(options=c_options)
     
     return driver
 
-def goggle_search(dominic:wd.Chrome, character_names:str, show_name:str):
+def google_search(webscraper:wd.Chrome, character_names:str, show_name:str):
     global PARCEL_INDEX
 
     # search for a fandom article to latch onto.
-    goggle_url = f"https://www.google.com/search?q={show_name.replace(' ', '+')}+fandom"
+    google_url = f"https://www.google.com/search?q={show_name.replace(' ', '+')}+fandom"
     try:
-        dominic.get(goggle_url) # access the page
+        webscraper.get(google_url) # access the page
     except Exception:
         PARCEL_INDEX += 1
         print("oopsies! failed to get the website!")
         return
-    search_results = dominic.find_elements(By.CSS_SELECTOR, ".yuRUbf") # find all search result objects
+    search_results = webscraper.find_elements(By.CSS_SELECTOR, ".yuRUbf") # find all search result objects
 
     
     links = []
@@ -96,9 +96,9 @@ def goggle_search(dominic:wd.Chrome, character_names:str, show_name:str):
     print("Loaded ",show_name,"'s fandom.",sep='')
 
     for character_name in character_names:
-        # go get the goggle search results!
+        # go get the google search results!
         print("\tInvestigating:", character_name)
-        valid_parcel, tensor_params_map, image_link = fondue_search(character_name, show_name, dominic)
+        valid_parcel, tensor_params_map, image_link = fondue_search(character_name, show_name, webscraper)
         if valid_parcel:
             save_current_parcel_to_disk(tensor_params_map, character_name, show_name, image_link)
         PARCEL_INDEX += 1
@@ -106,9 +106,9 @@ def goggle_search(dominic:wd.Chrome, character_names:str, show_name:str):
     # check if we should save a checkpoint.
     print("saving position")
     save_position(PARCEL_INDEX)
-    save_big_ass_csv()
+    save_big_as_heck_csv()
 
-def fondue_search(character:str, show_name:str, dominic:wd.Chrome):
+def fondue_search(character:str, show_name:str, webscraper:wd.Chrome):
     # attempt to get straight to the article
     page : None
     try:
@@ -125,8 +125,8 @@ def fondue_search(character:str, show_name:str, dominic:wd.Chrome):
     images = []
     try:
         print("\t\twill I has portrait??")
-        dominic.get(page.url)
-        image_link = dominic.find_element(By.CLASS_NAME, "pi-image-thumbnail").get_attribute('src')
+        webscraper.get(page.url)
+        image_link = webscraper.find_element(By.CLas_heck_NAME, "pi-image-thumbnail").get_attribute('src')
         image = image_link
         print("\t\ti has portrait!")
     except Exception:
@@ -172,7 +172,7 @@ def fondue_search(character:str, show_name:str, dominic:wd.Chrome):
         try:
             content = page.content
         except Exception:
-            print("\t\t This article aint got shit. Returning.")
+            print("\t\t This article aint got nothing. Returning.")
             return False, {}, ""
         string_dict = str(content)
         process_words(string_dict.replace('\n', ' ').split(' '), character, show_name, tensor_params_map)
@@ -232,7 +232,7 @@ def get_subdomain_from_url(url:str):
     # if the article name contains fandom??
 
 def get_characters_after(pos:int):
-    pos = pos * 2 # because of the horseshit with the empty entries
+    pos = pos * 2 # because of the horsenothing with the empty entries
     entries = []
     with open(CSV_FILE, 'r', encoding='ansi') as f:
         csv_reader = reader(f)
@@ -258,7 +258,7 @@ def load_position():
         SET_SIZE = int(strings[1])
         return int(strings[0])
 
-def load_big_ass_csv():
+def load_big_as_heck_csv():
     word_count = 0
     with open(UNIQUE_SET_FILE, 'rt') as f:
         csv_reader = csv.DictReader(f)
@@ -268,7 +268,7 @@ def load_big_ass_csv():
                 word_count += 1
     return word_count
 
-def save_big_ass_csv():
+def save_big_as_heck_csv():
     list_representation = list(main_map.items())
     with open(UNIQUE_SET_FILE, 'w', newline='') as f:
         csv_writer = writer(f)
@@ -278,10 +278,10 @@ def save_big_ass_csv():
 
 
 if __name__ == '__main__':
-    dominic = start_dominic()
+    webscraper = start_webscraper()
     index = load_position()
     if index > 0:
-        SET_SIZE = load_big_ass_csv()
+        SET_SIZE = load_big_as_heck_csv()
     lines = get_characters_after(index)
     i = 0
     print("there are ", len(lines) ,"lines to read")
@@ -289,6 +289,6 @@ if __name__ == '__main__':
         i += 1
         #convert next line to array
         arr = eval(line[1])
-        goggle_search(dominic, arr, line[0])
+        google_search(webscraper, arr, line[0])
             
         save_position(index)

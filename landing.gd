@@ -27,7 +27,7 @@ func get_two_random_names():
 	return [character_names[rand1], character_names[rand2]]
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(delta):		
 	var ratio = sin(time*SWITCH_SPEED) * sin(time*SWITCH_SPEED) * SUSTAIN
 	WhatIf.visible_ratio = clamp(ratio, 0.0, 0.999999)
 	print(WhatIf.visible_ratio)
@@ -41,3 +41,7 @@ func _process(delta):
 	time += delta
 	# randomize some names.
 	pass
+
+
+func _on_texture_button_pressed():	
+	get_tree().change_scene_to_file("res://overview.tscn")

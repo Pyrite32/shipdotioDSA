@@ -1,4 +1,43 @@
-[gd_scene format=3 uid="uid://chr70y8jwaah0"]
+[gd_scene load_steps=27 format=3 uid="uid://chr70y8jwaah0"]
+
+[ext_resource type="Script" path="res://overview.gd" id="1_aytrn"]
+[ext_resource type="Texture2D" uid="uid://d3fotyk4tt882" path="res://textures/overview-bg.png" id="1_yyp1l"]
+[ext_resource type="Texture2D" uid="uid://b1xw13fk2urhd" path="res://textures/ship-io-logo.png" id="2_qjoxy"]
+[ext_resource type="Texture2D" uid="uid://bs472mmggue8j" path="res://textures/heart-button-disabled.png" id="3_84lbe"]
+[ext_resource type="Texture2D" uid="uid://bba040hrhtsx0" path="res://textures/search-bar-disabled.png" id="4_sjbfe"]
+[ext_resource type="Texture2D" uid="uid://d2di1n1hta83k" path="res://textures/heart-button.png" id="5_847lj"]
+[ext_resource type="Shader" path="res://bars.gdshader" id="5_d44gr"]
+[ext_resource type="Texture2D" uid="uid://8ye6ayd8mmh8" path="res://textures/status-empty.png" id="5_irhp7"]
+[ext_resource type="Shader" path="res://overview.gdshader" id="5_l7sc8"]
+[ext_resource type="FontFile" uid="uid://co48i6xkoj41c" path="res://fonts/koliko-Regular.ttf" id="6_1um5x"]
+[ext_resource type="Texture2D" uid="uid://b481e6qctj8qe" path="res://textures/status-loading-chip.png" id="6_edgmx"]
+[ext_resource type="Texture2D" uid="uid://d4laj5tj4lnch" path="res://textures/placeholder-photo.png" id="6_inblk"]
+[ext_resource type="FontFile" uid="uid://fncmcodler5x" path="res://fonts/koliko-Bold.ttf" id="7_15l1p"]
+[ext_resource type="Texture2D" uid="uid://bbx5mfbqixbir" path="res://textures/search-bar.png" id="8_erh2w"]
+[ext_resource type="Texture2D" uid="uid://btgyio5pq1s13" path="res://textures/randomize button.png" id="10_1ejrk"]
+[ext_resource type="Texture2D" uid="uid://eqcqj2knikv0" path="res://textures/cocktail-shaker-sort-button.png" id="11_bfor5"]
+[ext_resource type="Texture2D" uid="uid://bqpteq5apquqp" path="res://textures/radix-sort-button.png" id="12_5h6f0"]
+[ext_resource type="Texture2D" uid="uid://dya6ut2ehbwkq" path="res://textures/lsd-radix-sort-button.png" id="18_e7dkw"]
+[ext_resource type="Texture2D" uid="uid://imdhp57a3vee" path="res://textures/cancel.png" id="19_td6ik"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a2htg"]
+shader = ExtResource("5_l7sc8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m0c58"]
+shader = ExtResource("5_l7sc8")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t4b17"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n5odw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yjesg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wo7dd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yeto5"]
+shader = ExtResource("5_d44gr")
+shader_parameter/interval = 30.0
+shader_parameter/enabled = true
 
 [node name="Title" type="Control"]
 layout_mode = 3
@@ -7,12 +46,353 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_aytrn")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="BG" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.117647, 0.109804, 0.192157, 1)
+texture = ExtResource("1_yyp1l")
+expand_mode = 2
+
+[node name="Verdict" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = 82.0
+offset_right = 66.0
+offset_bottom = 121.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_15l1p")
+theme_override_font_sizes/font_size = 36
+text = "56.7%"
+horizontal_alignment = 1
+
+[node name="VerdictRemarks" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -69.0
+offset_top = 125.0
+offset_right = 77.0
+offset_bottom = 164.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_15l1p")
+theme_override_font_sizes/font_size = 24
+text = "Perfect for each other"
+horizontal_alignment = 1
+
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1140.0
+offset_top = -1.0
+offset_right = -1009.0
+offset_bottom = 126.0
+grow_horizontal = 0
+texture = ExtResource("2_qjoxy")
+expand_mode = 1
+
+[node name="MatchPFP1" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_a2htg")
+layout_mode = 0
+offset_left = 315.0
+offset_top = 357.0
+offset_right = 443.0
+offset_bottom = 485.0
+texture = ExtResource("6_inblk")
+
+[node name="MatchPFP2" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_m0c58")
+layout_mode = 1
+offset_left = 712.0
+offset_top = 353.0
+offset_right = 840.0
+offset_bottom = 481.0
+texture = ExtResource("6_inblk")
+
+[node name="HeartButton" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 539.0
+offset_top = 216.0
+offset_right = 618.0
+offset_bottom = 282.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+metadata/_edit_group_ = true
+
+[node name="HeartButtonTexture" type="TextureButton" parent="HeartButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.076
+anchor_right = 0.987
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 0.0160003
+offset_right = 284.027
+offset_bottom = 304.0
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("3_84lbe")
+stretch_mode = 0
+metadata/_edit_group_ = true
+
+[node name="Below" type="TextureRect" parent="HeartButton/HeartButtonTexture"]
+modulate = Color(0.270588, 0.34902, 0.494118, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_top = 30.0
+offset_right = 375.0
+offset_bottom = 390.0
+texture = ExtResource("5_847lj")
+
+[node name="SearchBars" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.016
+anchor_top = 0.5
+anchor_right = 0.973
+anchor_bottom = 0.602
+offset_left = 5.568
+offset_top = -102.0
+offset_right = 5.104
+offset_bottom = -117.096
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SearchBars"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 83
+metadata/_edit_lock_ = true
+
+[node name="SearchBarLeftTexture" type="TextureRect" parent="SearchBars/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("4_sjbfe")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SearchBars/HBoxContainer/SearchBarLeftTexture"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 21.0
+offset_top = 49.0
+offset_right = 507.0
+offset_bottom = 355.0
+metadata/_edit_lock_ = true
+
+[node name="Below" type="TextureRect" parent="SearchBars/HBoxContainer/SearchBarLeftTexture"]
+modulate = Color(0.266667, 0.32549, 0.443137, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_top = 5.0
+offset_right = 268.0
+offset_bottom = 69.0
+mouse_filter = 2
+texture = ExtResource("8_erh2w")
+
+[node name="LineEditLeft" type="LineEdit" parent="SearchBars/HBoxContainer/SearchBarLeftTexture"]
+layout_mode = 2
+offset_left = 48.5
+offset_top = 12.5
+offset_right = 489.5
+offset_bottom = 50.5
+theme_override_colors/font_color = Color(0.164706, 0.168627, 0.247059, 1)
+theme_override_colors/font_placeholder_color = Color(0.164706, 0.168627, 0.247059, 1)
+theme_override_fonts/font = ExtResource("6_1um5x")
+theme_override_font_sizes/font_size = 23
+theme_override_styles/normal = SubResource("StyleBoxEmpty_t4b17")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n5odw")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_yjesg")
+placeholder_text = "<first character's name>"
+
+[node name="SearchBarRightTexture" type="TextureRect" parent="SearchBars/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_sjbfe")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SearchBars/HBoxContainer/SearchBarRightTexture"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 21.0
+offset_top = 49.0
+offset_right = 507.0
+offset_bottom = 355.0
+metadata/_edit_lock_ = true
+
+[node name="Below" type="TextureRect" parent="SearchBars/HBoxContainer/SearchBarRightTexture"]
+modulate = Color(0.266667, 0.32549, 0.443137, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_top = 5.0
+offset_right = 268.0
+offset_bottom = 69.0
+texture = ExtResource("8_erh2w")
+
+[node name="LineEditRight" type="LineEdit" parent="SearchBars/HBoxContainer/SearchBarRightTexture"]
+layout_mode = 0
+offset_left = 48.5
+offset_top = 12.5
+offset_right = 489.5
+offset_bottom = 50.5
+theme_override_colors/font_color = Color(0.164706, 0.168627, 0.247059, 1)
+theme_override_colors/font_placeholder_color = Color(0.164706, 0.168627, 0.247059, 1)
+theme_override_fonts/font = ExtResource("6_1um5x")
+theme_override_font_sizes/font_size = 23
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wo7dd")
+placeholder_text = "<second character's name>"
+
+[node name="StatusBar" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -526.0
+offset_top = 5.0
+offset_right = -18.0
+offset_bottom = 78.0
+grow_horizontal = 0
+
+[node name="StatusBarTexture" type="TextureRect" parent="StatusBar"]
+material = SubResource("ShaderMaterial_yeto5")
+layout_mode = 1
+offset_right = 512.0
+offset_bottom = 69.0
+texture = ExtResource("5_irhp7")
+
+[node name="StatusBarChip" type="TextureRect" parent="StatusBar"]
+layout_mode = 1
+offset_right = 512.0
+offset_bottom = 72.0
+texture = ExtResource("6_edgmx")
+
+[node name="LoadMessage" type="Label" parent="StatusBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.354
+anchor_top = 0.176
+anchor_right = 0.953
+anchor_bottom = 0.797
+offset_left = 0.0440063
+offset_top = -0.0240011
+offset_right = 0.157959
+offset_bottom = 0.0219955
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_15l1p")
+theme_override_font_sizes/font_size = 24
+text = "Initializing..."
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 1.0
+anchor_right = 1.22
+anchor_bottom = 0.099
+offset_left = -1125.0
+offset_top = 565.0
+offset_right = -253.44
+offset_bottom = 630.848
+grow_horizontal = 0
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 15
+
+[node name="RandomizeButton" type="TextureButton" parent="Control/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("10_1ejrk")
+
+[node name="Below" type="TextureRect" parent="Control/VBoxContainer/RandomizeButton"]
+modulate = Color(0.188235, 0.513726, 0.803922, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_top = 5.0
+offset_right = 268.0
+offset_bottom = 69.0
+texture = ExtResource("10_1ejrk")
+
+[node name="RadixMSDButton" type="TextureButton" parent="Control/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("11_bfor5")
+
+[node name="Below" type="TextureRect" parent="Control/VBoxContainer/RadixMSDButton"]
+modulate = Color(0.188235, 0.513726, 0.803922, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_top = 5.0
+offset_right = 268.0
+offset_bottom = 69.0
+texture = ExtResource("11_bfor5")
+
+[node name="RadixLSDButton" type="TextureButton" parent="Control/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("18_e7dkw")
+
+[node name="Below" type="TextureRect" parent="Control/VBoxContainer/RadixLSDButton"]
+modulate = Color(0.188235, 0.513726, 0.803922, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_top = 5.0
+offset_right = 268.0
+offset_bottom = 69.0
+texture = ExtResource("12_5h6f0")
+
+[node name="RadixLSDButton2" type="TextureButton" parent="Control/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("19_td6ik")
+
+[node name="Below" type="TextureRect" parent="Control/VBoxContainer/RadixLSDButton2"]
+modulate = Color(0.188235, 0.513726, 0.803922, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_top = 5.0
+offset_right = 64.0
+offset_bottom = 65.0
+texture = ExtResource("19_td6ik")
+
+[node name="RandomTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="SortStopwatch" type="Timer" parent="."]
+wait_time = 1000.0
+one_shot = true
+
+[connection signal="button_down" from="HeartButton/HeartButtonTexture" to="." method="_on_heart_button_texture_button_down"]
+[connection signal="pressed" from="HeartButton/HeartButtonTexture" to="." method="_on_heart_button_texture_pressed"]
+[connection signal="focus_entered" from="SearchBars/HBoxContainer/SearchBarLeftTexture/LineEditLeft" to="." method="_on_left_line_focus_entered"]
+[connection signal="focus_exited" from="SearchBars/HBoxContainer/SearchBarLeftTexture/LineEditLeft" to="." method="_on_line_edit_left_focus_exited"]
+[connection signal="mouse_exited" from="SearchBars/HBoxContainer/SearchBarLeftTexture/LineEditLeft" to="." method="_on_line_edit_left_mouse_exited"]
+[connection signal="text_changed" from="SearchBars/HBoxContainer/SearchBarLeftTexture/LineEditLeft" to="." method="_on_line_edit_left_text_changed"]
+[connection signal="text_submitted" from="SearchBars/HBoxContainer/SearchBarLeftTexture/LineEditLeft" to="." method="_on_line_edit_left_text_submitted"]
+[connection signal="focus_entered" from="SearchBars/HBoxContainer/SearchBarRightTexture/LineEditRight" to="." method="_on_right_line_focus_entered"]
+[connection signal="focus_exited" from="SearchBars/HBoxContainer/SearchBarRightTexture/LineEditRight" to="." method="_on_line_edit_right_focus_exited"]
+[connection signal="mouse_exited" from="SearchBars/HBoxContainer/SearchBarRightTexture/LineEditRight" to="." method="_on_line_edit_right_mouse_exited"]
+[connection signal="text_changed" from="SearchBars/HBoxContainer/SearchBarRightTexture/LineEditRight" to="." method="_on_line_edit_right_text_changed"]
+[connection signal="text_submitted" from="SearchBars/HBoxContainer/SearchBarRightTexture/LineEditRight" to="." method="_on_line_edit_right_text_submitted"]
+[connection signal="pressed" from="Control/VBoxContainer/RandomizeButton" to="." method="_on_randomize_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/RadixMSDButton" to="." method="_on_radix_msd_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/RadixLSDButton" to="." method="_on_radix_lsd_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/RadixLSDButton2" to="." method="_on_radix_lsd_button_2_pressed"]

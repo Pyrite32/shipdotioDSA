@@ -303,3 +303,5 @@ autoplay = "scroll-movies"
 libraries = {
 "": SubResource("AnimationLibrary_mum0n")
 }
+
+[connection signal="pressed" from="StartButton/Position/TextureButton" to="." method="_on_texture_button_pressed"]

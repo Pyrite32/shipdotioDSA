@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="100"
+   height="100"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.47 r22583"
+   sodipodi:docname="New document 1">
+  <defs
+     id="defs4">
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradientFire"
+       id="radialGradient3249"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.85945027,0,11.573318)"
+       cx="-1021.5062"
+       cy="82.343224"
+       fx="-1021.5062"
+       fy="82.343224"
+       r="83.034187" />
+    <linearGradient
+       id="linearGradientFire">
+      <stop
+         offset="0"
+         id="stopFire0"
+         style="stop-color:#ff0000;stop-opacity:1" />
+      <stop
+         id="stopFire1"
+         offset="1"
+         style="stop-color:#b00000;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="87.857146"
+     inkscape:cy="227.14285"
+     inkscape:document-units="px"
+     inkscape:current-layer="svg2"
+     showgrid="false"
+     inkscape:window-width="632"
+     inkscape:window-height="922"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-287.14285,-659.50504)">
+    <g
+       transform="translate(287.14285,-292.85714)"
+       id="Fire Country 1">
+      <path
+         sodipodi:type="arc"
+         style="fill:url(#radialGradient3249);fill-opacity:1;stroke:#000000;stroke-width:6.8012886;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:55.5000029"
+         id="Fire Country Icon 1"
+         sodipodi:cx="-1021.5062"
+         sodipodi:cy="82.343224"
+         sodipodi:rx="79.633545"
+         sodipodi:ry="67.963112"
+         d="m -941.87268,82.343224 c 0,37.534986 -35.65315,67.963116 -79.63352,67.963116 -43.9804,0 -79.6336,-30.42813 -79.6336,-67.963116 0,-37.534991 35.6532,-67.963112 79.6336,-67.963112 43.98037,0 79.63352,30.428121 79.63352,67.963112 z"
+         transform="matrix(0.60013489,0,0,0.70318836,663.04153,944.45938)" />
+      <path
+         style="fill:#000000;fill-opacity:1"
+         d="m 65.843582,1031.8603 c -7.16696,-4.7395 -12.70069,-11.5255 -17.66464,-18.661 -0.0471,-0.1558 -0.0787,-0.1423 -0.18446,0.078 -0.07,0.1467 -0.27477,0.5387 -0.45457,0.8711 -5.24202,10.2727 -13.35287,15.8331 -25.59288,17.7189 -0.28515,0.041 -2.93622,-0.06 -2.84469,-0.2936 -0.032,-0.067 1.2933,-0.6475 1.54246,-0.6986 6.29266,-2.3774 11.22613,-5.7571 15.0038,-9.8646 6.49271,-7.8683 9.70065,-18.0071 10.23267,-25.75745 0.39967,-4.87947 1.1069,-11.10554 -0.32972,-15.22835 -0.59103,-1.69595 -1.25756,-3.04573 -2.14727,-4.55267 -0.88198,-1.52445 -1.06118,-2.29286 -0.65331,-2.80161 0.30665,-0.38247 1.16207,-0.41209 2.13755,-0.0742 4.13233,1.56684 8.47954,3.64094 11.36145,6.64456 0.30094,0.37581 0.67441,0.71946 0.53671,1.2903 -0.0147,2.19576 -1.3443,3.97724 -1.83361,6.02104 -0.37257,0.95409 -0.39311,2.07418 -0.4959,3.08964 -0.48039,5.27718 -1.46986,10.53824 -3.09104,15.58234 -0.33394,1.0313 -0.3194,1.395 0.0773,1.9329 0.14999,0.2032 0.59333,0.8639 0.9852,1.4682 3.22333,5.3902 7.21211,8.5556 11.24298,11.266 4.41426,2.6377 8.94942,3.839 13.54172,4.8102 1.31806,0.305 6.21226,0.9619 9.99192,1.2299 2.7046,0.091 2.37737,0.2747 -0.11613,1.2536 -3.69539,1.4045 -10.06079,3.2323 -12.11137,3.7771 -2.3241,0.4736 -7.05593,2.2588 -9.13422,0.8973 l 0,0 z m -27.21612,-28.2902 c -4.98165,-3.58058 -9.60651,-9.39887 -13.73765,-16.58687 -0.313,-0.59249 -0.49218,-1.22444 -0.57592,-1.8984 -0.0608,-0.86651 0.49558,-1.7022 1.14424,-1.83352 0.80694,-0.19224 1.57357,0.12296 2.5998,0.36037 1.33578,0.28395 2.72718,0.52749 4.11244,0.74554 2.65387,0.40616 3.15109,0.56263 3.54839,1.11676 0.30055,0.41916 0.36118,1.16021 0.25087,3.06617 -0.26058,1.4571 0.0223,2.98496 0.31396,4.23943 0.73377,2.95701 1.2377,5.81104 2.41764,8.52352 0.23775,0.5474 0.51457,0.968 0.87561,1.5645 0.17625,0.2561 0.0976,1.1451 -0.15835,1.1757 -0.29603,-0.051 -0.52026,-0.3217 -0.79104,-0.4732 z m 17.70403,-0.6855 c -0.19106,-0.2687 0.0498,-0.6045 1.24584,-1.7321 3.59484,-3.96782 7.86826,-8.21846 8.89811,-13.7122 0.10778,-2.18896 -0.76927,-4.26433 -0.80504,-6.43642 3.7e-4,-0.90558 0.10037,-1.04178 1.04871,-1.43028 0.67273,-0.27558 1.6298,-0.30644 2.05562,-0.0663 3.83773,1.81018 5.79368,3.85251 7.04726,5.84112 0.32596,0.30759 0.27118,1.14108 -0.13329,2.0256 -3.18449,6.05221 -9.29101,15.00238 -18.77553,15.83158 -0.22911,-0.047 -0.41169,-0.1655 -0.58176,-0.321 z"
+         id="Fire Country Kanji 1"
+         sodipodi:nodetypes="ccsccccccscsccccccscccccccccccccsccccccccccscccccc" />
+    </g>
+  </g>
+  <metadata
+     id="metadata2837">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>

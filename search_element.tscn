@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://1d4wn3o7p7dt"]
+
+[ext_resource type="Texture2D" uid="uid://bfs48wu8vjni7" path="res://textures/gradient.png" id="1_st3qw"]
+[ext_resource type="Texture2D" uid="uid://d4laj5tj4lnch" path="res://textures/placeholder-photo.png" id="2_60or2"]
+[ext_resource type="FontFile" uid="uid://fncmcodler5x" path="res://fonts/koliko-Bold.ttf" id="2_fuyxm"]
+[ext_resource type="FontFile" uid="uid://co48i6xkoj41c" path="res://fonts/koliko-Regular.ttf" id="4_jd6ee"]
+
+[node name="SearchElement" type="Control"]
+custom_minimum_size = Vector2(100, 58)
+layout_mode = 3
+anchor_right = 0.358
+anchor_bottom = 0.12
+offset_right = 53.584
+offset_bottom = -15.76
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+clip_contents = true
+layout_mode = 0
+offset_right = 467.0
+offset_bottom = 62.0
+color = Color(0.0705882, 0.0705882, 0.0941176, 1)
+
+[node name="Gradient" type="TextureRect" parent="."]
+modulate = Color(0.54902, 0.54902, 0.54902, 1)
+texture_filter = 1
+layout_mode = 0
+offset_right = 466.0
+offset_bottom = 62.0
+texture = ExtResource("1_st3qw")
+expand_mode = 1
+
+[node name="PFP" type="Sprite2D" parent="."]
+position = Vector2(32, 32)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_60or2")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 3.0
+offset_right = 357.0
+offset_bottom = 39.0
+theme_override_fonts/font = ExtResource("2_fuyxm")
+theme_override_font_sizes/font_size = 24
+text = "Star Butterfly"
+vertical_alignment = 1
+
+[node name="ShowName" type="Label" parent="."]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 38.0
+offset_right = 460.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.776471, 0.792157, 0.8, 1)
+theme_override_fonts/font = ExtResource("4_jd6ee")
+theme_override_font_sizes/font_size = 18
+text = "Star Vs The Forces Of Evil"
+horizontal_alignment = 2
+vertical_alignment = 1

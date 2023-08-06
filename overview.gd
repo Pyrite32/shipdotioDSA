@@ -19,7 +19,7 @@ var characters_dataset_shadow = []
 var characters_dataset_sorted = []
 var dataset_size = 0
 
-
+# preload scene tree references and textures for ease of use.
 @onready var ENABLED_SEARCH_BAR = preload("res://textures/search-bar.png")
 @onready var DISABLED_SEARCH_BAR = preload("res://textures/search-bar-disabled.png")
 @onready var ENABLED_HEART = preload("res://textures/heart-button.png")
@@ -57,7 +57,7 @@ func _ready():
 	if FileAccess.file_exists(unpacked_file_location):
 		unpack_binary_thread = Thread.new()
 		modifying_data = true
-		unpack_binary_thread.start(import_csv)
+		unpack_binary_thread.start(import_csv) # import the dataset
 		
 	else:
 		update_status_text("dataset not found!")
@@ -116,20 +116,20 @@ func clear_right_search_bar_entries():
 		
 func update_search_bar(search_bar:LineEdit, max=4):
 	var is_left = false
-	if search_bar.name == "LineEditLeft":
+	if search_bar.name == "LineEditLeft": # clear entries, then refresh.
 		is_left = true
 		clear_left_search_bar_entries()
 	else:
 		clear_right_search_bar_entries()
 	var text = search_bar.text
-	var matches = bin_search_all_that_matches(text)
+	var matches = bin_search_all_that_matches(text) # uses binary search to search for all matches.
 	var result = []
 	for i in range(0, min(matches.size(),max)):
 		
 		result.append(matches[i])
 	if result.size() > 0:
 		for res in result:
-			spawn_new_search_term(res, search_bar.get_parent(), is_left)
+			spawn_new_search_term(res, search_bar.get_parent(), is_left) # creates a new search result for every one that was found
 		if is_left:
 			left_bar_result = true
 		else:
@@ -150,7 +150,7 @@ func spawn_no_results_term(search_bar:TextureRect):
 func spawn_new_search_term(character_name:String, search_bar:TextureRect, is_left):
 	var image_search = SEARCH_ELEMENT_SCENE.instantiate()
 	search_bar.get_node("VBoxContainer").add_child(image_search)
-	var image_file_path = ProjectSettings.globalize_path(".//profile-pictures/"+character_name+".png")
+	var image_file_path = ProjectSettings.globalize_path(".//profile-pictures/"+character_name+".png") # loads in the icon for the character.
 	if FileAccess.file_exists(image_file_path):
 		var image = Image.new()
 		image.load_png_from_buffer(FileAccess.get_file_as_bytes(image_file_path))
@@ -170,7 +170,7 @@ func spawn_new_search_term(character_name:String, search_bar:TextureRect, is_lef
 		temp_texture = ImageTexture.new()
 		temp_texture = ImageTexture.create_from_image(image)
 		image_search.get_node("PFP").texture = temp_texture
-		image_search.get_node("Gradient").modulate = final_color
+		image_search.get_node("Gradient").modulate = final_color # takes the average color from the image.
 		
 		if is_left:
 			left_char_temp_texture = temp_texture
@@ -214,7 +214,7 @@ func bin_search_all_that_matches(text:String, max_matches=100):
 		return result
 	return []
 			
-func binary_search_with_substring(arr: Array, x: String):
+func binary_search_with_substring(arr: Array, x: String): # binary search that is used for the search bar
 	var low = 0
 	x = x.to_lower()
 	var high = arr.size() - 1
@@ -234,7 +234,7 @@ func binary_search_with_substring(arr: Array, x: String):
 
 	return -1
 	
-func binary_search_exact(arr: Array, x: String):
+func binary_search_exact(arr: Array, x: String): # binary search without substrings. used for the heart button
 	var low = 0
 	var high = arr.size() - 1
 
@@ -255,7 +255,7 @@ func binary_search_exact(arr: Array, x: String):
 
 	return -1
 
-func get_lsd_char_at(string, index):
+func get_lsd_char_at(string, index): # only used for lsd radix sort
 	if index < string.length():
 		return int(string[index]) % 256
 	else:
@@ -317,7 +317,7 @@ func lsd_radix_sort(array):
 		update_status_text("LSD Radix Sort %s of %s : [%s/%s]" % 
 		[meta_progress, meta_max_progress, internal_progress, internal_progress_max])
 		meta_progress += 1
-	if global_should_stop_sorting:
+	if global_should_stop_sorting: # used to stop sorting.
 		global_should_stop_sorting = false
 		$SortStopwatch.stop()
 		return false
@@ -356,7 +356,7 @@ func cocktail_shaker_sort(array:Array):
 		progress = min(progress+1,max_progress)
 		update_status_text("Cocktail Sort... [%s/%s]" % [progress, max_progress])
 		min += 1
-	if global_should_stop_sorting:
+	if global_should_stop_sorting: # used to stop sorting
 		global_should_stop_sorting = false
 		$SortStopwatch.stop()
 		return false
@@ -371,7 +371,7 @@ func import_csv():
 	var unpacked_file = FileAccess.open("res://data/unpacked.csv", FileAccess.READ)
 	var data_size = int(FileAccess.open("res://data/size.txt", FileAccess.READ).get_as_text())
 	var count = 0
-	while not unpacked_file.eof_reached():
+	while not unpacked_file.eof_reached(): # keep getting lines until you can't
 		var line = unpacked_file.get_csv_line()
 		characters_dataset.append(line)
 		length_of_longest_str = max(length_of_longest_str, line[0].length())
@@ -379,7 +379,7 @@ func import_csv():
 		characters_dataset_sorted.append(line[0])
 		update_status_text("Loading... %s/%s" % [count, 50536])
 		count += 1
-	var csv_data_offset_skip = 620
+	var csv_data_offset_skip = 620 
 	var csv_data_offset_skip_progress = 0
 	while count <= 50536:
 		csv_data_offset_skip_progress += 1
@@ -412,8 +412,8 @@ func compare_two_characters(char1, char2):
 	char_1_vector = normalized_vector(char_1_vector)
 	char_2_vector = normalized_vector(char_2_vector)
 	for i in range(0,min(char_1_vector.size(), char_2_vector.size())):
-		dot_product_sum += char_1_vector[i] * char_2_vector[i]
-	display_results(abs(dot_product_sum * 100.0))
+		dot_product_sum += char_1_vector[i] * char_2_vector[i] # cosine difference
+	display_results(abs(dot_product_sum * 100.0)) # sometimes its negative for some reason
 	pass
 	
 func display_results(percent):
@@ -433,9 +433,9 @@ func display_results(percent):
 		set_verdict_remarks("Absolutely not")
 	$Verdict.text = str(round(percent)) + "%"
 	if percent >= 50:
-		$Verdict.modulate = lerp(Color.YELLOW, Color.GREEN, (percent-0.5)*2.0 )
+		$Verdict.modulate = lerp(Color.YELLOW, Color.GREEN, (percent-0.5)*2.0 ) # did not work
 	else:
-		$Verdict.modulate = lerp(Color.RED, Color.YELLOW, (percent)*2.0)
+		$Verdict.modulate = lerp(Color.RED, Color.YELLOW, (percent)*2.0) # did not work
 	
 	pass
 	
@@ -462,30 +462,21 @@ func _on_randomize_button_pressed():
 		unpack_binary_thread.start(randomize_data)
 	modifying_data = false
 
-func prepare_lexical_data_for_sorting():
+func prepare_lexical_data_for_sorting(): # deprecated
 	var lexical_path = ProjectSettings.globalize_path("run-sort/lexical-data-rand.txt")
 	if FileAccess.file_exists(lexical_path):
 		var file = FileAccess.open(lexical_path, FileAccess.WRITE)
 		for entry in characters_dataset_shadow:
 			file.store_string(entry+"\n")
 
-func _on_radix_msd_button_pressed():
+func _on_radix_msd_button_pressed(): # this is actually for cocktail sort
 	if not modifying_data:
 		set_status_busy()
 		update_status_text("Sorting...")
 		modifying_data = true
-		$SortStopwatch.start()
+		$SortStopwatch.start() # keep track of time
 		sort_thread = Thread.new()
 		sort_thread.start(cocktail_shaker_sort.bind(characters_dataset_shadow))
-		
-	#	disable_all()
-	#	update_status_text("Sorting...")
-	#	$SortStopwatch.start()
-	#	await sort_using_msd()
-	#	enable_all()
-	#	set_status_ready("... Sort Time: %ss" % str(round($SortStopwatch.wait_time - $SortStopwatch.time_left)))
-	#	$SortStopwatch.stop()
-	#	modifying_data = false
 
 func _on_radix_lsd_button_pressed():
 	if not modifying_data:
@@ -500,20 +491,20 @@ func exists(character_name):
 	var idx = binary_search_exact(characters_dataset_sorted, character_name)
 	return idx != -1
 	
-func normalized_vector(vector):
+func normalized_vector(vector): # normalize an n-length vector
 	var mag = magnitude_of_vector(vector)
 	var result = []
 	for dimension in vector:
 		result.append(float(dimension) / mag)
 	return result
 
-func magnitude_of_vector(vector):
+func magnitude_of_vector(vector): # magnitude of n-length vector
 	var sum = 0
 	for dimension in vector:
 		sum += (float(dimension) * float(dimension))
 	return sqrt(sum)
 
-func lexical_compare_two_entries(en1, en2):
+func lexical_compare_two_entries(en1, en2): # unused
 	print(en1[0])
 	print(en2[0])
 	if en1[0] > en2[0]:
